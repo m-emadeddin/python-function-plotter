@@ -399,7 +399,7 @@ class Ui_MainWindow(object):
         self.max_input.setText("")
         self.max_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"enter a max value for x, e.g. 10", None))
         self.plot_button.setText(QCoreApplication.translate("MainWindow", u"Plot", None))
-        self.info_label.setText(QCoreApplication.translate("MainWindow", u"Function Plotter is an app to plot\n1-variable mathematical function.", None))
+        self.info_label.setText(QCoreApplication.translate("MainWindow", u"Function Plotter is an app to plot 1-variable mathematical function.", None))
         self.example_label.setText(QCoreApplication.translate("MainWindow", u"e.g.  5*x^3 + 2*x.", None))
     # retranslateUi
 
