@@ -47,7 +47,8 @@ class FunctionPlotterWindow(QMainWindow, Ui_MainWindow):
                 self.canvas.draw()
 
             except Exception :
-                msg = "\nPlease make sure of using a valid math expression.\n\nNote: only variable 'x' is allowed."
+                self.figure.clear()
+                msg = "\nPlease make sure to use a valid math expression.\n\nNote: only variable 'x' is allowed."
                 self.display_error(msg)
 
 
