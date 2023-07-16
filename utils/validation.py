@@ -36,12 +36,20 @@ class Validation:
             raiseError('Minimum value must be less than Maximum value.')
             return False
         
+        if not self.validMathExp(self.function_input):
+            raiseError("Please make sure to use a valid math expression")
+            return False
+        
         if not self.security_check() : 
             return False
 
         return True
         
 
+    def validMathExp(self, str):
+        toMatch = "(-)?(\d+$)|((-)?(\d+[+-])?(\d+[\*\/])?[xX](\^\d+)?([+-](\d+)?([\*\/][xX](\^\d+)?)?)*)*$"
+        str = str.replace(" ","")
+        return re.match(toMatch, str)
     
     def security_check(self):
         dangerous_keywords = [
