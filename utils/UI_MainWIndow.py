@@ -18,6 +18,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         # Setting up Main Window & Styling
         MainWindow.setEnabled(True)
+        MainWindow.setWindowIcon(QIcon("utils/icon.png"))
         MainWindow.resize(920, 565)
         MainWindow.setMinimumSize(QSize(920, 550))
         MainWindow.setMaximumSize(QSize(16777215, 16777215))
