@@ -1,5 +1,4 @@
 from PySide2.QtWidgets import QMessageBox, QApplication
-import re
 
 class Validation:
     def __init__(self, function_input, min_input, max_input):
@@ -36,7 +35,7 @@ class Validation:
             raiseError('Minimum value must be less than Maximum value.')
             return False
         
-        if not self.validMathExp(self.function_input):
+        if  self.isDoubleAst(self.function_input):
             raiseError("Please make sure to use a valid math expression")
             return False
         
@@ -46,10 +45,8 @@ class Validation:
         return True
         
 
-    def validMathExp(self, str):
-        toMatch = "(-)?(\d+$)|((-)?(\d+[+-])?(\d+[\*\/])?[xX](\^\d+)?([+-](\d+)?([\*\/][xX](\^\d+)?)?)*)*$"
-        str = str.replace(" ","")
-        return re.match(toMatch, str)
+    def isDoubleAst(self, str):
+        return "**" in str
     
     def security_check(self):
         dangerous_keywords = [
