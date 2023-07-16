@@ -15,12 +15,14 @@ class FunctionPlotterWindow(QMainWindow, Ui_MainWindow):
         # Link the plot button to method PLOT
         self.plot_button.clicked.connect(self.plot)
 
-    def plot(self):
 
+    def plot(self):
+        
         # function input string : replacing ^ with ** for exp operation in python
         function_str = self.function_input.text().replace("^", "**").lower().strip()
         min_input = self.min_input.text()
         max_input = self.max_input.text()
+    
         
         input = Validation(function_str, min_input, max_input)
 
