@@ -1,4 +1,5 @@
 from PySide2.QtWidgets import QMessageBox, QApplication
+import re
 
 class Validation:
     def __init__(self, function_input, min_input, max_input):
@@ -8,42 +9,40 @@ class Validation:
     
     def validate(self):
         if self.function_input == "" or self.function_input == " ":
-            raiseError('The Function Input Cannot Be Empty')
+            raiseError('The Function Input Cannot Be Empty', "Empty Function")
             return False
         if self.min_input == "" or self.min_input == " ":
-            raiseError('The Minimum Value Input Cannot Be Empty')
+            raiseError('The Minimum Value Input Cannot Be Empty', "Empty Min Value")
             return False
         
         if self.max_input == "" or self.max_input == " ":
-            raiseError('The Maximum Value Input Cannot Be Empty')
+            raiseError('The Maximum Value Input Cannot Be Empty', "Empty Max Value")
             return False
         
         try:
             self.min_input = float(self.min_input)
         except Exception:
-            raiseError("Please enter numbers in Minimum Value Input Field.")
+            raiseError("Please enter numbers in Minimum Value Input Field.", "Invalid Input")
             return False
         
         try:
             self.max_input = float(self.max_input)
         except Exception:
-            raiseError("Please enter numbers in Maximum value Input Field.")
+            raiseError("Please enter numbers in Maximum value Input Field.", "Invalid Input")
             return False
-        
     
         if self.min_input >= self.max_input:
-            raiseError('Minimum value must be less than Maximum value.')
+            raiseError("Minimum value must be less than Maximum value.", "Invalid Input")
             return False
         
-        if  self.isDoubleAst(self.function_input):
-            raiseError("Please make sure to use a valid math expression")
+        if self.isDoubleAst(self.function_input):
+            raiseError("Please make sure to use a valid math expression", "Invalid Expression")
             return False
-        
+
         if not self.security_check() : 
             return False
 
         return True
-        
 
     def isDoubleAst(self, str):
         return "**" in str
@@ -64,19 +63,17 @@ class Validation:
         ]
         for word in dangerous_keywords:
             if word in self.function_input :
-                raiseError(f"{word} is blocked. Be Ethical!!!\n\nUse Mathematical Expressions Only.")
+                raiseError(f"'{word}' is blocked. Be Ethical!!!\n\nUse Mathematical Expressions Only.", "Security Alert")
                 return False
         return True
 
 
-def raiseError(errMsg):
+def raiseError(errMsg, title):
     msg_box = QMessageBox()
     msg_box.setIcon(QMessageBox.Critical)
-    msg_box.setWindowTitle("Critical Message")
+    msg_box.setWindowTitle(title)
     msg_box.setText(errMsg)
     msg_box.setStandardButtons(QMessageBox.Ok)
-
-    # Execute the message box
     msg_box.exec_()
 
 
