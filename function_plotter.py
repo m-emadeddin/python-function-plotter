@@ -18,14 +18,13 @@ class FunctionPlotterWindow(QMainWindow, Ui_MainWindow):
 
     def plot(self):
         
-        # function input string : replacing ^ with ** for exp operation in python
-        function_str = self.function_input.text().replace("^", "**").lower().strip()
+        function_str = self.function_input.text().lower().strip()
         min_input = self.min_input.text()
         max_input = self.max_input.text()
-    
-        
         input = Validation(function_str, min_input, max_input)
 
+        # function input string : replacing ^ with ** for exp operation in python
+        function_str = function_str.replace("^", "**")
         # Plotting section 
         if input.validate():
             try:
