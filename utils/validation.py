@@ -1,4 +1,5 @@
 from PySide2.QtWidgets import QMessageBox
+import re
 
 class Validation:
     def __init__(self, function_input, min_input, max_input):
@@ -22,22 +23,24 @@ class Validation:
             raise_error('The Maximum Value Input Cannot Be Empty', "Empty Max Value")
             return False
         
-        try:
-            # Attempt to convert min input to float
-            self.min_input = float(self.min_input)
-        except Exception:
+        # Check if the min value contains a numeric value
+        if not self.is_numeric(self.min_input):
             raise_error("Please enter numbers in Minimum Value Input Field.", "Invalid Input")
             return False
+        else:
+            self.min_input = float(self.min_input)
         
-        try:
-            # Attempt to convert max input to float
-            self.max_input = float(self.max_input)
-        except Exception:
+        # Check if the max value contains a numeric value
+        if not self.is_numeric(self.max_input):
             raise_error("Please enter numbers in Maximum value Input Field.", "Invalid Input")
             return False
+        else:
+            self.max_input = float(self.max_input)
     
         # Check if the min value is greater than or equal to the max value
         if self.min_input >= self.max_input:
+            print(self.min_input)
+            print(self.max_input)
             raise_error("Minimum value must be less than Maximum value.", "Invalid Input")
             return False
         
@@ -52,6 +55,11 @@ class Validation:
         # Replace '^' with '**' for exponentiation
         self.function_input = self.function_input.replace("^", "**")
         return True
+
+
+    def is_numeric(self, input_str):
+        numeric_pattern = r'^[-+]?[0-9]*\.?[0-9]+$'
+        return re.match(numeric_pattern, input_str) is not None
 
     def contains_double_ast(self, string):
         return "**" in string

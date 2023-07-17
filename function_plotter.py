@@ -24,7 +24,7 @@ class FunctionPlotterWindow(QMainWindow, Ui_MainWindow):
             plotter = Plotter(input_data.function_input, input_data.min_input, input_data.max_input)
             try:
                 # Generate plot
-                plotter.getValues()
+                plotter.get_values()
                 self.gridLayout_3.addWidget(plotter.canvas, 0, 0, 1, 1)
                 plotter.figure.clear()
                 plotter.plot()
