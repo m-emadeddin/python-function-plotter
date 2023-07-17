@@ -6,27 +6,27 @@ from matplotlib.figure import Figure
 from PySide2.QtWidgets import QMessageBox
 
 class Plotter:
-    def __init__(self, function_str, min_input, max_input):
-        self.function_str = function_str
-        self.min_input = min_input
-        self.max_input = max_input
+    def __init__(self):
 
         # Creating Figure
         self.figure = Figure(facecolor='lightblue')
         self.canvas = FigureCanvas(self.figure)
 
-    def get_values(self):
+
+    def get_values(self, expression, min_x, max_x):
+        expression
         # Convert the function string to a lambda function
         x = symbols('x')
-        function = lambdify(x, self.function_str)
+        function = lambdify(x, expression)
 
         # Convert the min and max input to floats
-        min_val = float(self.min_input)
-        max_val = float(self.max_input)
+        min_val = float(min_x)
+        max_val = float(max_x)
 
         # Generate x and y values for plotting
         self.x_vals = np.linspace(min_val, max_val, 100)
         self.y_vals = function(self.x_vals)
+
 
     def plot(self):
         # Plot the function
