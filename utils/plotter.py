@@ -1,6 +1,7 @@
 import numpy as np
 from sympy import symbols, lambdify
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from PySide2.QtWidgets import QApplication, QMainWindow
 from matplotlib.figure import Figure
 from PySide2.QtWidgets import QMessageBox
 
@@ -36,8 +37,11 @@ class Plotter:
         fig.set_title('Function Plot')
         fig.set_facecolor('white')
         self.canvas.draw()
-
-    def display_error(self, message):
-        # Display an error message using QMessageBox
-        QMessageBox.warning(self, 'Error', message)
-
+    
+    def display_error(self):
+        msg_box = QMessageBox()
+        msg_box.setIcon(QMessageBox.Warning)
+        msg_box.setWindowTitle('Error')
+        msg_box.setText("\nPlease make sure to use a valid math expression.\n\nNote: only variable 'x' is allowed.")
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.exec_()

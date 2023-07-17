@@ -2,7 +2,7 @@ import sys
 from PySide2.QtWidgets import QApplication, QMainWindow, QMessageBox
 from utils.UI_MainWIndow import Ui_MainWindow
 from utils.validation import Validation
-from plotter import Plotter
+from utils.plotter import Plotter
 
 
 class FunctionPlotterWindow(QMainWindow, Ui_MainWindow):
