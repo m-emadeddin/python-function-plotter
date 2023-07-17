@@ -42,6 +42,7 @@ class Validation:
         if not self.security_check() : 
             return False
 
+        self.function_input = self.function_input.replace("^", "**")
         return True
 
     def isDoubleAst(self, str):
