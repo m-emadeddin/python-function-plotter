@@ -21,10 +21,10 @@ class FunctionPlotterWindow(QMainWindow, Ui_MainWindow):
         input_data = Validation(function_str, min_input, max_input)
         if input_data.validate():
             # Create a Plotter instance
-            plotter = Plotter(input_data.function_input, input_data.min_input, input_data.max_input)
+            plotter = Plotter()
             try:
                 # Generate plot
-                plotter.get_values()
+                plotter.get_values(input_data.function_input , input_data.min_input, input_data.max_input)
                 self.gridLayout_3.addWidget(plotter.canvas, 0, 0, 1, 1)
                 plotter.figure.clear()
                 plotter.plot()
