@@ -1,5 +1,4 @@
-from PySide2.QtWidgets import QMessageBox, QApplication
-import re
+from PySide2.QtWidgets import QMessageBox
 
 class Validation:
     def __init__(self, function_input, min_input, max_input):
