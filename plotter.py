@@ -2,6 +2,7 @@ import numpy as np
 from sympy import symbols, lambdify
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
+from PySide2.QtWidgets import QMessageBox
 
 class Plotter():
     def __init__(self, function_str, min_input, max_input):
@@ -30,3 +31,5 @@ class Plotter():
         fig.set_facecolor('white')
         self.canvas.draw()
 
+    def display_error(self, message):
+        QMessageBox.warning(self, 'Error', msg = "\nPlease make sure to use a valid math expression.\n\nNote: only variable 'x' is allowed.")
