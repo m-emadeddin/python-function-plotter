@@ -39,8 +39,6 @@ class Validation:
     
         # Check if the min value is greater than or equal to the max value
         if self.min_input >= self.max_input:
-            print(self.min_input)
-            print(self.max_input)
             raise_error("Minimum value must be less than Maximum value.", "Invalid Input")
             return False
         
