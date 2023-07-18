@@ -102,8 +102,8 @@ class Validation:
 def raise_error(err_msg, title):
     msg_box = QMessageBox()
     msg_box.setIcon(QMessageBox.Critical)
-    msg_box.setWindowTitle(title)
-    msg_box.setText(err_msg)
+    msg_box.setWindowTitle(str(title))
+    msg_box.setText(str(err_msg))
     msg_box.setStandardButtons(QMessageBox.Ok)
     msg_box.exec_()
 
