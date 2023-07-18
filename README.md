@@ -33,7 +33,6 @@ The Python Function Plotter is a graphical tool that allows users to plot mathem
 * **Drawing Graphs:** Users can input mathematical expressions using standard mathematical notation, including functions like trigonometric, logarithmic, and exponential functions, and visualize their graphs.
 * **Customizable Range:** Users can specify the range of values for the x-axis to zoom in or out and focus on specific regions of the graph.
 * **Validation:** The application performs validation on user input, ensuring that the mathematical expressions and range values are valid and providing helpful error messages if any issues arise.
-Screenshots
 
 
 ## Snapshots
