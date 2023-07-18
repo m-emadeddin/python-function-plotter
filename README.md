@@ -6,11 +6,6 @@ The Python Function Plotter is a graphical tool that allows users to plot mathem
 
 ## Installation For Linux, Mac, and Windows
 
-```bash
-    cd python-function-plotter/
-    pip install -r requirements.txt
-```
-
 **Prerequisites**
 * Python 3.6 or above
 
